@@ -16,6 +16,7 @@ import { ToastService } from '../services/toast.service';
 export class HomePage {
   public tareas=[];
   public tareasCompletadas=[];
+  public comprado:boolean=false;
 
 
   public tareaForm=this.fb.group({
@@ -26,6 +27,22 @@ export class HomePage {
   constructor(private tareasService:TareasService, private toastService:ToastService, private router:Router, private fb:FormBuilder) {
     this.getTareas();
     this.getTareasCompletadas();
+    
+  }
+
+  getTareasCompletadas(){
+    return this.tareasService.getTareasCompletadas().subscribe({
+      next:res=>{
+        if(res){
+          this.tareasCompletadas=res['tareas'];
+          console.log(this.tareasCompletadas);
+        }
+      },
+      error:err=>{
+        console.log(err);
+        this.toastService.mostrarToast('Error obteniendo las tareas', 'danger',2000);
+      }
+    })
   }
 
 
@@ -42,26 +59,13 @@ export class HomePage {
       }
     })
   }
-  getTareasCompletadas(){
-    return this.tareasService.getTareasCompletadas().subscribe({
-      next:async res=>{
-        if(res){
-          this.tareasCompletadas=res['tareas'];
-        }
-      },
-      error:async err=>{
-        if(err){
-          this.toastService.mostrarToast('Error obteniendo las tareas completadas', 'danger',2000);
-        }
-      }
-    })
-
-  }
+ 
 
   deleteTarea(uid:string){
     return this.tareasService.deleteTarea(uid).subscribe({
       next:res=>{
         if(res){
+        this.toastService.mostrarToast('Producto borrado con éxito', 'success', 1000);
           this.getTareas();
           this.getTareasCompletadas();
         }
@@ -85,7 +89,7 @@ export class HomePage {
           this.tareaForm.markAsPristine();
           this.tareaForm.reset();
           this.getTareas();
-          this.getTareasCompletadas();
+          
         }
       },
       error:err=>{
@@ -97,19 +101,23 @@ export class HomePage {
   }
  }
 
- marcarCompletada(uid:string, accion:boolean){
-  this.tareasService.marcarCompletada(uid, accion).subscribe({
+ marcarCompletada(index, uid){
+    const tarea=this.tareas[index]
+console.log(tarea);
+tarea.completada=!tarea.completada
+  
+console.log('llego a check');
+
+this.tareasService.marcarCompletada(uid,tarea.completada).subscribe({
     next:res=>{
-      if(res){
         this.toastService.mostrarToast('Tarea Completada', 'success', 1000);
         this.getTareas();
         this.getTareasCompletadas();
-      }
-    },
-    error:err=>{
-      if(err){
+        
+      },
+      error:err=>{
+        tarea.completada=!tarea.completada;
         this.toastService.mostrarToast('No se ha podido completar la tarea', 'danger', 1000);
-      }
     }
   })
  }

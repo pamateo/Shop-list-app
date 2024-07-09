@@ -55,6 +55,7 @@ const crearTarea=async(req, res=response)=>{
 
         const tarea=new Tareas(object);
         tarea.nombre=nombre;
+        tarea.completada=false;
         await tarea.save();
 
         res.json({

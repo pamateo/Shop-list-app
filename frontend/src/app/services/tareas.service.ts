@@ -26,9 +26,10 @@ export class TareasService {
     return this.http.delete(`${environments.baseUrl}/${uid}`);
   }
 
-  marcarCompletada(uid:string, accion:boolean){
+  marcarCompletada(uid, accion:boolean){
     if(!uid){uid=''}
     const data={completada:accion};
+    console.log(data);
     return this.http.put(`${environments.baseUrl}/${uid}`, data);
   }
 

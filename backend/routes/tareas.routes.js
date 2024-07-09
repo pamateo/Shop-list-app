@@ -15,8 +15,6 @@ router.get('/',[
 router.post('/',[
     check('nombre', 'El nombre es obligatorio').not().isEmpty().trim(),
     check('descripcion', 'la descripción debe ser válida').optional().isString().trim(),
-    check('prioridad', 'La prioridad debe ser válida').optional().isEmpty().trim(),
-    check('completada', 'El atributo completada debe ser booleano').optional().isBoolean(),
     validarCampos,
     validarPrioridad
 ], crearTarea);

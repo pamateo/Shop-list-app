@@ -1,50 +1,45 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
-    <ion-title>TO-DO App</ion-title>
+    <ion-title class="ion-text-center">Lista de compra</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">  
   <ion-card>
     <form (ngSubmit)="crearTarea()" [formGroup]="tareaForm">
       <ion-row>
-        <ion-col size="5">
-          <ion-input class="custom" formControlName="nombre" type="text" placeholder="Nombre"></ion-input>
+        <ion-col class="product" size="8">
+          <ion-input class="custom" formControlName="nombre" type="text" placeholder="Producto"></ion-input>
             </ion-col>
-            <ion-col size="5">
-              <ion-checkbox checked="false" formControlName="completada">Completada</ion-checkbox>
-            </ion-col>
-            <ion-col size="2">
+            <ion-col size="4">
               <ion-button class="buton" fill="clear" type="submit"><ion-icon class="add" slot="icon-only" size="large" name="add"></ion-icon></ion-button>
             </ion-col>
           </ion-row>
     </form>
   </ion-card>
-  <ion-list inset="true">
+  <ion-list class="border-radius" inset="true">
     <ion-list-header>
-      <ion-label class="header">Tareas</ion-label>
+      <ion-label class="header">Artículos</ion-label>
     </ion-list-header>
-    <ion-item-sliding *ngFor="let tarea of tareas">
+    <ion-item-sliding *ngFor="let tarea of tareas; let i=index">
+      <!-- <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))"> -->
       <ion-item [button]="true">
-        <ion-label>{{tarea.nombre}}</ion-label>
+        <ion-label id="{{i}}">{{tarea.nombre}}</ion-label>
       </ion-item>
       <ion-item-options slot="end">
         <ion-item-option slot="icon-only" color="danger" (click)="deleteTarea(tarea.uid)"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-item-option>
-        <ion-item-option slot="icon-only" color="success" (click)="marcarCompletada(tarea.uid, true)" ><ion-icon slot="icon-only" name="checkmark-outline"></ion-icon></ion-item-option>
+        <!-- <ion-item-option slot="icon-only" color="success" (click)="marcarCompletada(tarea.uid, true)" ><ion-icon slot="icon-only" name="checkmark-outline"></ion-icon></ion-item-option> -->
+        <ion-item-option slot="icon-only" color="success" (click)="marcarCompletada(i, tarea.uid)" ><ion-icon slot="icon-only" name="checkmark-outline"></ion-icon></ion-item-option>
       </ion-item-options>
+    <!-- </ion-reorder-group> -->
     </ion-item-sliding>
-  </ion-list>
-  <ion-list inset="true">
-    <ion-list-header>
-      <ion-label class="header">Completadas</ion-label>
-    </ion-list-header>
     <ion-item-sliding *ngFor="let tarea of tareasCompletadas">
       <ion-item [button]="true">
-        <ion-label>{{tarea.nombre}}</ion-label>
+        <ion-label [ngClass]="{'checked':tarea.completada}">{{tarea.nombre}}</ion-label>
       </ion-item>
       <ion-item-options slot="end">
         <ion-item-option slot="icon-only" color="danger" (click)="deleteTarea(tarea.uid)"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-    
+      
   </ion-content>

@@ -5,7 +5,6 @@
 
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -36,6 +35,10 @@ ion-list{
   --background:#D8E2DC;
 }
 
+ion-toolbar{
+  --background: #1d3d1e;
+  --color: white;
+}
 
 .addTaskButton {
 	height: 35px;
@@ -51,7 +54,7 @@ ion-item{
 }
 
 ion-content{
-  --background: #ffc1d3;
+  --background: #a9bdb0;
 }
 
 ion-title{
@@ -64,7 +67,7 @@ ion-title{
   text-align: center;
   font-size: 32px;
   margin-top: 0;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #4caf50;
 }
 
 ion-checkbox::part(container) {
@@ -73,7 +76,7 @@ ion-checkbox::part(container) {
 }
 
 ion-checkbox{
-  --checkbox-background-checked:#F7418F;
+  --checkbox-background-checked:#f680b3;
   --checkmark-color:black;
 }
 
@@ -81,11 +84,7 @@ ion-input.custom{
   --placeholder-margin-left:10px;
 }
 
-hr{
-  height: 10px;
-  background-color: black;
-  margin-top: 0;
-}
+
 
 
 ion-item{
@@ -101,4 +100,18 @@ ion-item{
 
 .buton{
   margin-left: -10px;
+}
+
+.border-radius{
+  border-radius: 10px;
+}
+
+
+//  color: #2e7d32;
+.product{
+  margin-left: auto;
+}
+
+.checked{
+  text-decoration: line-through;
 }
