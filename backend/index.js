@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.use('/api/tareas', require('./routes/tareas.routes'));
+app.use('/api/historial', require('./routes/historial.routes'));
 
 
 app.listen(process.env.PORT, ()=>{

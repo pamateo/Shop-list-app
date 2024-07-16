@@ -76,8 +76,10 @@ ion-checkbox::part(container) {
 }
 
 ion-checkbox{
-  --checkbox-background-checked:#f680b3;
+  --size:25px;
+  --checkbox-background-checked:#6cdc9a;
   --checkmark-color:black;
+  --transition: 0.3s ease-in-out;
 }
 
 ion-input.custom{
@@ -115,3 +117,21 @@ ion-item{
 .checked{
   text-decoration: line-through;
 }
+
+.purchase{
+  font-family: 'titulo';
+  font-size: 28px;
+  max-width: 293px;
+  margin-left: 48px;
+  --background:#50B153;
+}
+
+.history{
+  margin-top: 20px;
+  font-family: 'titulo';
+  font-size: 28px;
+  max-width: 293px;
+  margin-left: 48px;
+  --background:#ae8e46;
+}
+

@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'titulo';
+    src: url('../../../assets/fonts/Simple Vintage.otf');
+  }
+
+  ion-toolbar{
+    --background: #674e14;
+    --color: white;
+}
+
+ion-title{
+    font-family: 'titulo';
+    font-size: 40px;
+}
+
+ion-content{
+    --background:#bca672;
+}
+
+.border-radius{
+    border-radius: 10px;
+}

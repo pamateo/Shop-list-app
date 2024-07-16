@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="danger" [strong]="true" (click)="cancel()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" color="success" [disabled]="!historialForm.valid" [strong]="true">Confirmar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list class="border-radius">
+    <ion-list-header>
+      <ion-title>Resumen de compra</ion-title>
+    </ion-list-header>
+    <ul>
+      <ion-item *ngFor="let producto of productos">
+        <li><ion-label>{{producto.nombre}}</ion-label></li>
+      </ion-item>
+    </ul>
+    <form [formGroup]="historialForm">
+      <ion-item>
+        <ion-input labelPlacement="stacked" label="Nombre" formControlName="nombre" placeholder="Ej: 'Casas rurales'" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input labelPlacement="stacked" label="Precio total" formControlName="precio" placeholder="Ej: 34.75" ></ion-input>
+      </ion-item>
+    </form>
+  </ion-list>
+</ion-content>

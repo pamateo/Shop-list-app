@@ -20,26 +20,31 @@
     <ion-list-header>
       <ion-label class="header">Artículos</ion-label>
     </ion-list-header>
+    <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))">
     <ion-item-sliding *ngFor="let tarea of tareas; let i=index">
-      <!-- <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))"> -->
       <ion-item [button]="true">
-        <ion-label id="{{i}}">{{tarea.nombre}}</ion-label>
+        <ion-checkbox (ionChange)="marcarCompletada($event, i, tarea.uid)"><ion-label id="{{i}}">{{tarea.nombre}}</ion-label></ion-checkbox>
+        <ion-reorder slot="start"> </ion-reorder>
       </ion-item>
       <ion-item-options slot="end">
         <ion-item-option slot="icon-only" color="danger" (click)="deleteTarea(tarea.uid)"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-item-option>
-        <!-- <ion-item-option slot="icon-only" color="success" (click)="marcarCompletada(tarea.uid, true)" ><ion-icon slot="icon-only" name="checkmark-outline"></ion-icon></ion-item-option> -->
-        <ion-item-option slot="icon-only" color="success" (click)="marcarCompletada(i, tarea.uid)" ><ion-icon slot="icon-only" name="checkmark-outline"></ion-icon></ion-item-option>
       </ion-item-options>
-    <!-- </ion-reorder-group> -->
     </ion-item-sliding>
-    <ion-item-sliding *ngFor="let tarea of tareasCompletadas">
+  </ion-reorder-group>
+    <ion-item-sliding *ngFor="let producto of productosComprados">
       <ion-item [button]="true">
-        <ion-label [ngClass]="{'checked':tarea.completada}">{{tarea.nombre}}</ion-label>
+        <ion-label [ngClass]="{'checked':producto.completada}">{{producto.nombre}}</ion-label>
+        <ion-checkbox [checked]="producto.completada" (ionChange)="marcarCompletada($event, i, producto.uid)"></ion-checkbox>
       </ion-item>
       <ion-item-options slot="end">
-        <ion-item-option slot="icon-only" color="danger" (click)="deleteTarea(tarea.uid)"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-item-option>
+        <ion-item-option slot="icon-only" color="danger" (click)="deleteTarea(producto.uid)"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-      
+  <ion-button [disabled]="productosComprados.length===0" class="purchase" (click)="mostrarResumen(productosComprados)" expand="block" fill="solid" shape="round">
+    Finalizar compra
+  </ion-button>
+  <ion-button  class="history" routerLink="/historial" expand="block" fill="solid" shape="round">
+    Mostrar historial
+  </ion-button>
   </ion-content>

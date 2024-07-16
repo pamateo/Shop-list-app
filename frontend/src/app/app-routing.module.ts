@@ -1,6 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { NuevoComponent } from './nuevo/nuevo.component';
+import { HistorialComponent } from './components/historial/historial.component';
+import { HistorialDetallesComponent } from './components/historial-detalles/historial-detalles.component';
+
 
 const routes: Routes = [
   {
@@ -8,14 +10,18 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path:'nuevo',
-    component:NuevoComponent
-  },
-  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path:'historial',
+    component:HistorialComponent
+  },
+  {
+    path:'detalles',
+    component:HistorialDetallesComponent
+  }
 ];
 
 @NgModule({

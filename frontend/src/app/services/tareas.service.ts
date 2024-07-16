@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environments } from '../environments/environments';
-environments
+
 
 
 
@@ -29,7 +29,6 @@ export class TareasService {
   marcarCompletada(uid, accion:boolean){
     if(!uid){uid=''}
     const data={completada:accion};
-    console.log(data);
     return this.http.put(`${environments.baseUrl}/${uid}`, data);
   }
 

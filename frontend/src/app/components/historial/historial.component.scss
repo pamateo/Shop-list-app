@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'titulo';
+    src: url('../../../assets/fonts/Simple Vintage.otf');
+  }
+
+
+
+.sort-icon{
+    color: black;
+}
+
+ion-toolbar{
+    --background: #674e14;
+    --color: white;
+}
+
+ion-title{
+    font-family: 'titulo';
+    font-size: 40px;
+}
+
+ion-content{
+    --background:#bca672;
+}
+
+ion-list{
+    margin-top: 20px;
+    --background:#D8E2DC;
+  }
+
+  .header{
+    font-family: 'titulo';
+    text-align: center;
+    font-size: 32px;
+    margin-top: 0;
+    border-bottom: 2px solid #80691f;
+  }
+
+  .border-radius{
+    border-radius: 10px;
+  }
+
+  .home{
+    font-family: 'titulo';
+    font-size: 28px;
+    max-width: 293px;
+    margin-left: 48px;
+    --background:#6e5f20;
+  }
+  
