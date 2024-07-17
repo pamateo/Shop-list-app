@@ -1,5 +1,8 @@
 <ion-header >
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <ion-title class="ion-text-center">Historial de compras</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -23,7 +26,7 @@
       <ion-label class="header">Compras</ion-label>
     </ion-list-header>
     <ion-item-sliding *ngFor="let historial of historialesFiltrados">
-      <ion-item (click)="mostrarDetalles(historial.uid)">
+      <ion-item>
         <ion-label class="ion-text-left">{{historial.nombre}}</ion-label>
         <ion-label class="ion-text-end">{{historial.fecha | date: 'dd/MM/yyyy'}}</ion-label>
         <ion-label class="ion-text-end">{{historial.precio}}€</ion-label>
@@ -34,9 +37,4 @@
     </ion-item-sliding>
   </ion-list>
   
-  
-  
-  <ion-button class="home" expand="block" fill="solid" shape="round" (click)="home()" >
-    Inicio
-  </ion-button>
 </ion-content>
