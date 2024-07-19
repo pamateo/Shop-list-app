@@ -11,4 +11,4 @@ En el apartado de frontend, deberemos tener instalado tanto el framework Angular
 
 ## Autores ✒️
 
-* **Andrés Villanueva** - *Frontend y Backend* - [pamateo](https://github.com/pamateo)
+* **Pablo Mateo** - *Frontend y Backend* - [pamateo](https://github.com/pamateo)
