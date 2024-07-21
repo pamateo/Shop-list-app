@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HistorialComponent } from './components/historial/historial.component';
+import { HistorialDetallesComponent } from './components/historial-detalles/historial-detalles.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path:'historial',
     component:HistorialComponent
+  },
+  {
+    path:'detalles',
+    component:HistorialDetallesComponent
   }
 ];
 

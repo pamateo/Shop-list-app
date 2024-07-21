@@ -1,0 +1,4 @@
+// capacitor.settings.gradle
+include ':app'
+
+def capacitor_version = "6.1.0" // Replace with your Capacitor version

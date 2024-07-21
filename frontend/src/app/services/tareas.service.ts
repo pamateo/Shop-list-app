@@ -18,8 +18,10 @@ export class TareasService {
   
   getTareasCompletadas(){
     return this.http.get(`${environments.baseUrl}?completadas=true`);
-    
-    
+  }
+  
+  getProcuto(uid){
+    return this.http.get(`${environments.baseUrl}?id=${uid}`);
   }
 
   deleteTarea(uid:string){

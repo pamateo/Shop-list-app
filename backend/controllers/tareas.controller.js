@@ -16,7 +16,7 @@ const getTareas=async(req, res=response)=>{
             if(!tareas){
                 return res.status(400).json({
                     ok:false,
-                    msg:'No existe esa tarea con esa id'
+                    msg:'No existe ese producto con ese id'
                 });
             }  
         }else if(completadas){
@@ -27,7 +27,7 @@ const getTareas=async(req, res=response)=>{
         }
         res.json({
             ok:true,
-            msg:'Get tareas',
+            msg:'Get productos',
             tareas
         })
     } catch (error) {

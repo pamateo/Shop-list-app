@@ -78,5 +78,8 @@ export class HistorialComponent  implements OnInit {
     }
   }
 
+  mostrarDetalles(uid){
+    this.router.navigate(['/detalles'], {queryParams:{uid}})
+  }
   
 }
